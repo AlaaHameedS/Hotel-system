@@ -1,0 +1,19 @@
+c:\users\lenovo\documents\visual studio 2015\Projects\HMS\HMS\bin\Debug\HMS.exe.config
+c:\users\lenovo\documents\visual studio 2015\Projects\HMS\HMS\bin\Debug\HMS.exe
+c:\users\lenovo\documents\visual studio 2015\Projects\HMS\HMS\bin\Debug\HMS.pdb
+c:\users\lenovo\documents\visual studio 2015\Projects\HMS\HMS\bin\Debug\Bunifu_UI_v1.52.dll
+c:\users\lenovo\documents\visual studio 2015\Projects\HMS\HMS\obj\Debug\HMS.FRM_LOGIN.resources
+c:\users\lenovo\documents\visual studio 2015\Projects\HMS\HMS\obj\Debug\HMS.Properties.Resources.resources
+c:\users\lenovo\documents\visual studio 2015\Projects\HMS\HMS\obj\Debug\HMS.csproj.GenerateResource.Cache
+c:\users\lenovo\documents\visual studio 2015\Projects\HMS\HMS\obj\Debug\HMS.exe
+c:\users\lenovo\documents\visual studio 2015\Projects\HMS\HMS\obj\Debug\HMS.pdb
+C:\Users\lenovo\documents\visual studio 2015\Projects\HMS\HMS\bin\Debug\Guna.UI2.dll
+C:\Users\lenovo\documents\visual studio 2015\Projects\HMS\HMS\obj\Debug\HMS.FRM_MAIN.resources
+C:\Users\lenovo\documents\visual studio 2015\Projects\HMS\HMS\bin\Debug\EntityFramework.dll
+C:\Users\lenovo\documents\visual studio 2015\Projects\HMS\HMS\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\lenovo\documents\visual studio 2015\Projects\HMS\HMS\bin\Debug\EntityFramework.xml
+C:\Users\lenovo\documents\visual studio 2015\Projects\HMS\HMS\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\lenovo\documents\visual studio 2015\Projects\HMS\HMS\obj\Debug\HMS.csprojResolveAssemblyReference.cache
+C:\Users\lenovo\Desktop\NEW PROJECT\HMS\HMS\bin\Debug\HMS.exe.config
+C:\Users\lenovo\Desktop\NEW PROJECT\HMS\HMS\obj\Debug\HMS.exe
+C:\Users\lenovo\Desktop\NEW PROJECT\HMS\HMS\obj\Debug\HMS.pdb

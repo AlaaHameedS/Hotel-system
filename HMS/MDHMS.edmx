@@ -1,0 +1,307 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="DB_HMSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="TBL_ADDROOM">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="room_number" Type="nvarchar" MaxLength="50" />
+          <Property Name="room_type" Type="nvarchar" MaxLength="50" />
+          <Property Name="room_bed" Type="nvarchar" MaxLength="50" />
+          <Property Name="room_price" Type="nvarchar" MaxLength="50" />
+          <Property Name="room_book" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="TBL_CHECKOUT">
+          <Key>
+            <PropertyRef Name="id_checkout" />
+          </Key>
+          <Property Name="id_checkout" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="checkout" Type="date" />
+          <Property Name="id" Type="int" />
+        </EntityType>
+        <EntityType Name="TBL_EMPLOYEE">
+          <Key>
+            <PropertyRef Name="emid" />
+          </Key>
+          <Property Name="emid" Type="int" Nullable="false" />
+          <Property Name="emname" Type="nvarchar" MaxLength="50" />
+          <Property Name="emphone" Type="nvarchar" MaxLength="50" />
+          <Property Name="emgender" Type="nvarchar" MaxLength="50" />
+          <Property Name="ememail" Type="nvarchar" MaxLength="50" />
+          <Property Name="emuser" Type="nvarchar" MaxLength="50" />
+          <Property Name="empassword" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="TBL_NEROOM">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="room_number" Type="nvarchar" MaxLength="50" />
+          <Property Name="room_type" Type="nvarchar" MaxLength="50" />
+          <Property Name="room_bed" Type="nvarchar" MaxLength="50" />
+          <Property Name="room_price" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="TBL_REGISTER">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cusname" Type="nvarchar" MaxLength="50" />
+          <Property Name="cusphone" Type="nvarchar" MaxLength="50" />
+          <Property Name="cusnational" Type="nvarchar" MaxLength="50" />
+          <Property Name="cusgender" Type="nvarchar" MaxLength="50" />
+          <Property Name="cusdatebirth" Type="date" />
+          <Property Name="idProof" Type="nvarchar" MaxLength="50" />
+          <Property Name="cusaddress" Type="nvarchar" MaxLength="50" />
+          <Property Name="cuscheckin" Type="date" />
+          <Property Name="cuscheckout" Type="date" />
+          <Property Name="roomnumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="roombed" Type="nvarchar" MaxLength="50" />
+          <Property Name="roomtype" Type="nvarchar" MaxLength="50" />
+          <Property Name="roomprice" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_TBL_CHECKOUT_TBL_CHECKOUT">
+          <End Role="TBL_CHECKOUT" Type="Self.TBL_CHECKOUT" Multiplicity="1" />
+          <End Role="TBL_CHECKOUT1" Type="Self.TBL_CHECKOUT" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_CHECKOUT">
+              <PropertyRef Name="id_checkout" />
+            </Principal>
+            <Dependent Role="TBL_CHECKOUT1">
+              <PropertyRef Name="id_checkout" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DB_HMSModelStoreContainer">
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBL_ADDROOM" EntityType="Self.TBL_ADDROOM" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBL_CHECKOUT" EntityType="Self.TBL_CHECKOUT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBL_EMPLOYEE" EntityType="Self.TBL_EMPLOYEE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBL_NEROOM" EntityType="Self.TBL_NEROOM" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBL_REGISTER" EntityType="Self.TBL_REGISTER" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_TBL_CHECKOUT_TBL_CHECKOUT" Association="Self.FK_TBL_CHECKOUT_TBL_CHECKOUT">
+            <End Role="TBL_CHECKOUT" EntitySet="TBL_CHECKOUT" />
+            <End Role="TBL_CHECKOUT1" EntitySet="TBL_CHECKOUT" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DB_HMSModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="DB_HMSEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="TBL_NEROOM" EntityType="DB_HMSModel.TBL_NEROOM" />
+          <EntitySet Name="TBL_ADDROOM" EntityType="DB_HMSModel.TBL_ADDROOM" />
+          <EntitySet Name="sysdiagrams" EntityType="DB_HMSModel.sysdiagram" />
+          <EntitySet Name="TBL_CHECKOUT" EntityType="DB_HMSModel.TBL_CHECKOUT" />
+          <AssociationSet Name="FK_TBL_CHECKOUT_TBL_CHECKOUT" Association="DB_HMSModel.FK_TBL_CHECKOUT_TBL_CHECKOUT">
+            <End Role="TBL_CHECKOUT" EntitySet="TBL_CHECKOUT" />
+            <End Role="TBL_CHECKOUT1" EntitySet="TBL_CHECKOUT" />
+          </AssociationSet>
+          <EntitySet Name="TBL_REGISTER" EntityType="DB_HMSModel.TBL_REGISTER" />
+          <EntitySet Name="TBL_EMPLOYEE" EntityType="DB_HMSModel.TBL_EMPLOYEE" />
+        </EntityContainer>
+        <EntityType Name="TBL_NEROOM">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="room_number" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="room_type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="room_bed" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="room_price" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="TBL_ADDROOM">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="room_number" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="room_type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="room_bed" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="room_price" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="room_book" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="TBL_CHECKOUT">
+          <Key>
+            <PropertyRef Name="id_checkout" />
+          </Key>
+          <Property Name="id_checkout" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="checkout" Type="DateTime" Precision="0" />
+          <Property Name="id" Type="Int32" />
+          <NavigationProperty Name="TBL_CHECKOUT1" Relationship="DB_HMSModel.FK_TBL_CHECKOUT_TBL_CHECKOUT" FromRole="TBL_CHECKOUT" ToRole="TBL_CHECKOUT1" />
+          <NavigationProperty Name="TBL_CHECKOUT2" Relationship="DB_HMSModel.FK_TBL_CHECKOUT_TBL_CHECKOUT" FromRole="TBL_CHECKOUT1" ToRole="TBL_CHECKOUT" />
+        </EntityType>
+        <Association Name="FK_TBL_CHECKOUT_TBL_CHECKOUT">
+          <End Type="DB_HMSModel.TBL_CHECKOUT" Role="TBL_CHECKOUT" Multiplicity="1" />
+          <End Type="DB_HMSModel.TBL_CHECKOUT" Role="TBL_CHECKOUT1" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_CHECKOUT">
+              <PropertyRef Name="id_checkout" />
+            </Principal>
+            <Dependent Role="TBL_CHECKOUT1">
+              <PropertyRef Name="id_checkout" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="TBL_REGISTER">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cusname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="cusphone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="cusnational" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="cusgender" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="cusdatebirth" Type="DateTime" Precision="0" />
+          <Property Name="idProof" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="cusaddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="cuscheckin" Type="DateTime" Precision="0" />
+          <Property Name="roomnumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="roombed" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="roomtype" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="roomprice" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="cuscheckout" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="TBL_EMPLOYEE">
+          <Key>
+            <PropertyRef Name="emid" />
+          </Key>
+          <Property Name="emid" Type="Int32" Nullable="false" />
+          <Property Name="emname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="emphone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="emgender" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ememail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="emuser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="empassword" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DB_HMSModelStoreContainer" CdmEntityContainer="DB_HMSEntities">
+          <EntitySetMapping Name="TBL_NEROOM">
+            <EntityTypeMapping TypeName="DB_HMSModel.TBL_NEROOM">
+              <MappingFragment StoreEntitySet="TBL_NEROOM">
+                <ScalarProperty Name="room_price" ColumnName="room_price" />
+                <ScalarProperty Name="room_bed" ColumnName="room_bed" />
+                <ScalarProperty Name="room_type" ColumnName="room_type" />
+                <ScalarProperty Name="room_number" ColumnName="room_number" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_ADDROOM">
+            <EntityTypeMapping TypeName="DB_HMSModel.TBL_ADDROOM">
+              <MappingFragment StoreEntitySet="TBL_ADDROOM">
+                <ScalarProperty Name="room_book" ColumnName="room_book" />
+                <ScalarProperty Name="room_price" ColumnName="room_price" />
+                <ScalarProperty Name="room_bed" ColumnName="room_bed" />
+                <ScalarProperty Name="room_type" ColumnName="room_type" />
+                <ScalarProperty Name="room_number" ColumnName="room_number" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="DB_HMSModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_CHECKOUT">
+            <EntityTypeMapping TypeName="DB_HMSModel.TBL_CHECKOUT">
+              <MappingFragment StoreEntitySet="TBL_CHECKOUT">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="checkout" ColumnName="checkout" />
+                <ScalarProperty Name="id_checkout" ColumnName="id_checkout" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_REGISTER">
+            <EntityTypeMapping TypeName="DB_HMSModel.TBL_REGISTER">
+              <MappingFragment StoreEntitySet="TBL_REGISTER">
+                <ScalarProperty Name="cuscheckout" ColumnName="cuscheckout" />
+                <ScalarProperty Name="roomprice" ColumnName="roomprice" />
+                <ScalarProperty Name="roomtype" ColumnName="roomtype" />
+                <ScalarProperty Name="roombed" ColumnName="roombed" />
+                <ScalarProperty Name="roomnumber" ColumnName="roomnumber" />
+                <ScalarProperty Name="cuscheckin" ColumnName="cuscheckin" />
+                <ScalarProperty Name="cusaddress" ColumnName="cusaddress" />
+                <ScalarProperty Name="idProof" ColumnName="idProof" />
+                <ScalarProperty Name="cusdatebirth" ColumnName="cusdatebirth" />
+                <ScalarProperty Name="cusgender" ColumnName="cusgender" />
+                <ScalarProperty Name="cusnational" ColumnName="cusnational" />
+                <ScalarProperty Name="cusphone" ColumnName="cusphone" />
+                <ScalarProperty Name="cusname" ColumnName="cusname" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_EMPLOYEE">
+            <EntityTypeMapping TypeName="DB_HMSModel.TBL_EMPLOYEE">
+              <MappingFragment StoreEntitySet="TBL_EMPLOYEE">
+                <ScalarProperty Name="empassword" ColumnName="empassword" />
+                <ScalarProperty Name="emuser" ColumnName="emuser" />
+                <ScalarProperty Name="ememail" ColumnName="ememail" />
+                <ScalarProperty Name="emgender" ColumnName="emgender" />
+                <ScalarProperty Name="emphone" ColumnName="emphone" />
+                <ScalarProperty Name="emname" ColumnName="emname" />
+                <ScalarProperty Name="emid" ColumnName="emid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DB_HMSModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="DB_HMSEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="TBL_NEROOM" EntityType="DB_HMSModel.TBL_NEROOM" />
+    <EntitySet Name="TBL_ADDROOM" EntityType="DB_HMSModel.TBL_ADDROOM" />
+    <EntitySet Name="sysdiagrams" EntityType="DB_HMSModel.sysdiagram" />
+    <EntitySet Name="TBL_CHECKOUT" EntityType="DB_HMSModel.TBL_CHECKOUT" />
+    <AssociationSet Name="FK_TBL_CHECKOUT_TBL_CHECKOUT" Association="DB_HMSModel.FK_TBL_CHECKOUT_TBL_CHECKOUT">
+      <End Role="TBL_CHECKOUT" EntitySet="TBL_CHECKOUT" />
+      <End Role="TBL_CHECKOUT1" EntitySet="TBL_CHECKOUT" />
+    </AssociationSet>
+    <EntitySet Name="TBL_REGISTER" EntityType="DB_HMSModel.TBL_REGISTER" />
+    <EntitySet Name="TBL_EMPLOYEE" EntityType="DB_HMSModel.TBL_EMPLOYEE" />
+  </EntityContainer>
+  <EntityType Name="TBL_NEROOM">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="room_number" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="room_type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="room_bed" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="room_price" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="TBL_ADDROOM">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="room_number" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="room_type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="room_bed" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="room_price" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="room_book" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="TBL_CHECKOUT">
+    <Key>
+      <PropertyRef Name="id_checkout" />
+    </Key>
+    <Property Name="id_checkout" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="checkout" Type="DateTime" Precision="0" />
+    <Property Name="id" Type="Int32" />
+    <NavigationProperty Name="TBL_CHECKOUT1" Relationship="DB_HMSModel.FK_TBL_CHECKOUT_TBL_CHECKOUT" FromRole="TBL_CHECKOUT" ToRole="TBL_CHECKOUT1" />
+    <NavigationProperty Name="TBL_CHECKOUT2" Relationship="DB_HMSModel.FK_TBL_CHECKOUT_TBL_CHECKOUT" FromRole="TBL_CHECKOUT1" ToRole="TBL_CHECKOUT" />
+  </EntityType>
+  <Association Name="FK_TBL_CHECKOUT_TBL_CHECKOUT">
+    <End Type="DB_HMSModel.TBL_CHECKOUT" Role="TBL_CHECKOUT" Multiplicity="1" />
+    <End Type="DB_HMSModel.TBL_CHECKOUT" Role="TBL_CHECKOUT1" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="TBL_CHECKOUT">
+        <PropertyRef Name="id_checkout" />
+      </Principal>
+      <Dependent Role="TBL_CHECKOUT1">
+        <PropertyRef Name="id_checkout" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="TBL_REGISTER">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="cusname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="cusphone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="cusnational" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="cusgender" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="cusdatebirth" Type="DateTime" Precision="0" />
+    <Property Name="idProof" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="cusaddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="cuscheckin" Type="DateTime" Precision="0" />
+    <Property Name="roomnumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="roombed" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="roomtype" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="roomprice" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="cuscheckout" Type="DateTime" Precision="0" />
+  </EntityType>
+  <EntityType Name="TBL_EMPLOYEE">
+    <Key>
+      <PropertyRef Name="emid" />
+    </Key>
+    <Property Name="emid" Type="Int32" Nullable="false" />
+    <Property Name="emname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="emphone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="emgender" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ememail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="emuser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="empassword" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+</Schema>

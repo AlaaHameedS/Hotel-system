@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DB_HMSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="TBL_ADDROOM">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="room_number" Type="nvarchar" MaxLength="50" />
+    <Property Name="room_type" Type="nvarchar" MaxLength="50" />
+    <Property Name="room_bed" Type="nvarchar" MaxLength="50" />
+    <Property Name="room_price" Type="nvarchar" MaxLength="50" />
+    <Property Name="room_book" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="TBL_CHECKOUT">
+    <Key>
+      <PropertyRef Name="id_checkout" />
+    </Key>
+    <Property Name="id_checkout" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="checkout" Type="date" />
+    <Property Name="id" Type="int" />
+  </EntityType>
+  <EntityType Name="TBL_EMPLOYEE">
+    <Key>
+      <PropertyRef Name="emid" />
+    </Key>
+    <Property Name="emid" Type="int" Nullable="false" />
+    <Property Name="emname" Type="nvarchar" MaxLength="50" />
+    <Property Name="emphone" Type="nvarchar" MaxLength="50" />
+    <Property Name="emgender" Type="nvarchar" MaxLength="50" />
+    <Property Name="ememail" Type="nvarchar" MaxLength="50" />
+    <Property Name="emuser" Type="nvarchar" MaxLength="50" />
+    <Property Name="empassword" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="TBL_NEROOM">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="room_number" Type="nvarchar" MaxLength="50" />
+    <Property Name="room_type" Type="nvarchar" MaxLength="50" />
+    <Property Name="room_bed" Type="nvarchar" MaxLength="50" />
+    <Property Name="room_price" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="TBL_REGISTER">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="cusname" Type="nvarchar" MaxLength="50" />
+    <Property Name="cusphone" Type="nvarchar" MaxLength="50" />
+    <Property Name="cusnational" Type="nvarchar" MaxLength="50" />
+    <Property Name="cusgender" Type="nvarchar" MaxLength="50" />
+    <Property Name="cusdatebirth" Type="date" />
+    <Property Name="idProof" Type="nvarchar" MaxLength="50" />
+    <Property Name="cusaddress" Type="nvarchar" MaxLength="50" />
+    <Property Name="cuscheckin" Type="date" />
+    <Property Name="cuscheckout" Type="date" />
+    <Property Name="roomnumber" Type="nvarchar" MaxLength="50" />
+    <Property Name="roombed" Type="nvarchar" MaxLength="50" />
+    <Property Name="roomtype" Type="nvarchar" MaxLength="50" />
+    <Property Name="roomprice" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <Association Name="FK_TBL_CHECKOUT_TBL_CHECKOUT">
+    <End Role="TBL_CHECKOUT" Type="Self.TBL_CHECKOUT" Multiplicity="1" />
+    <End Role="TBL_CHECKOUT1" Type="Self.TBL_CHECKOUT" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="TBL_CHECKOUT">
+        <PropertyRef Name="id_checkout" />
+      </Principal>
+      <Dependent Role="TBL_CHECKOUT1">
+        <PropertyRef Name="id_checkout" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DB_HMSModelStoreContainer">
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TBL_ADDROOM" EntityType="Self.TBL_ADDROOM" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TBL_CHECKOUT" EntityType="Self.TBL_CHECKOUT" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TBL_EMPLOYEE" EntityType="Self.TBL_EMPLOYEE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TBL_NEROOM" EntityType="Self.TBL_NEROOM" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TBL_REGISTER" EntityType="Self.TBL_REGISTER" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_TBL_CHECKOUT_TBL_CHECKOUT" Association="Self.FK_TBL_CHECKOUT_TBL_CHECKOUT">
+      <End Role="TBL_CHECKOUT" EntitySet="TBL_CHECKOUT" />
+      <End Role="TBL_CHECKOUT1" EntitySet="TBL_CHECKOUT" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
